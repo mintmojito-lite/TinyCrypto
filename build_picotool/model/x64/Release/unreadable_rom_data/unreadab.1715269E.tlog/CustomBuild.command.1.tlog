@@ -1,0 +1,48 @@
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\3A450710FF4C658E2B6A46CBB09EA505\RP2350_A2_ROM_END.H.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D BINARY_FILE=C:/Tinycrypto/build_arm_new/_deps/picotool-src/model/rp2350_a2_rom_end.bin -D OUTPUT_NAME=rp2350_a2_rom_end -P C:/Tinycrypto/build_arm_new/_deps/picotool-src/model/../cmake/binh.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\3A450710FF4C658E2B6A46CBB09EA505\RP2350_A3_ROM_END.H.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D BINARY_FILE=C:/Tinycrypto/build_arm_new/_deps/picotool-src/model/rp2350_a3_rom_end.bin -D OUTPUT_NAME=rp2350_a3_rom_end -P C:/Tinycrypto/build_arm_new/_deps/picotool-src/model/../cmake/binh.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\3A450710FF4C658E2B6A46CBB09EA505\RP2350_A4_ROM_END.H.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D BINARY_FILE=C:/Tinycrypto/build_arm_new/_deps/picotool-src/model/rp2350_a4_rom_end.bin -D OUTPUT_NAME=rp2350_a4_rom_end -P C:/Tinycrypto/build_arm_new/_deps/picotool-src/model/../cmake/binh.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\555D33CC9158E6FAEAE17F4F70FF7E23\UNREADABLE_ROM_DATA.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_ARM_NEW\_DEPS\PICOTOOL-SRC\MODEL\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Tinycrypto/build_arm_new/_deps/picotool-src -BC:/Tinycrypto/build_picotool --check-stamp-file C:/Tinycrypto/build_picotool/model/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,9 @@
+C:\Tinycrypto\tests\test_curve25519.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\test_curve25519.obj
+C:\Tinycrypto\src\aes256.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\aes256.obj
+C:\Tinycrypto\src\bigint.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\bigint.obj
+C:\Tinycrypto\src\chacha20.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\chacha20.obj
+C:\Tinycrypto\src\curve25519.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\curve25519.obj
+C:\Tinycrypto\src\fe.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\fe.obj
+C:\Tinycrypto\src\hmac.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\hmac.obj
+C:\Tinycrypto\src\sha256.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\sha256.obj
+C:\Tinycrypto\src\utils.cpp;C:\Tinycrypto\build_host\test_curve25519.dir\Release\utils.obj

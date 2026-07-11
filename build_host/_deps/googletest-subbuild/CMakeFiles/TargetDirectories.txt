@@ -1,0 +1,3 @@
+C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,38 @@
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\774CE431E11D94BB4020402FCA7A9B56\ENC_BOOTLOADER_ELF.H.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D BINARY_FILE=C:/Tinycrypto/build_picotool/enc_bootloader/enc_bootloader.elf -D OUTPUT_NAME=enc_bootloader_elf -P C:/Tinycrypto/build_arm_new/_deps/picotool-src/cmake/binh.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\774CE431E11D94BB4020402FCA7A9B56\ENC_BOOTLOADER_MBEDTLS_ELF.H.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -D BINARY_FILE=C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/enc_bootloader.elf -D OUTPUT_NAME=enc_bootloader_mbedtls_elf -P C:/Tinycrypto/build_arm_new/_deps/picotool-src/cmake/binh.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\6BD2ADF2FD538A879E00B596289449C1\EMBEDDED_DATA_NO_LIBUSB.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_ARM_NEW\_DEPS\PICOTOOL-SRC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Tinycrypto/build_arm_new/_deps/picotool-src -BC:/Tinycrypto/build_picotool --check-stamp-file C:/Tinycrypto/build_picotool/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

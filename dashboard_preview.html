@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TinyCrypto Benchmark Dashboard</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      font-family: Segoe UI, Arial, sans-serif;
+      background: linear-gradient(135deg, #07111f, #0d2138);
+      color: #f3f6fb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      width: min(100%, 980px);
+      background: rgba(7, 17, 31, 0.92);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      padding: 28px;
+      box-sizing: border-box;
+    }
+    h1 { margin: 0 0 8px; font-size: 30px; }
+    .subtitle { margin: 0 0 16px; color: #9fb0c8; }
+    .pill { display: inline-block; padding: 7px 12px; border-radius: 999px; background: #18324f; color: #8fe0ff; margin-right: 8px; }
+    .controls { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #08111c;
+      background: linear-gradient(135deg, #7de6ff, #4cb4ff);
+    }
+    button.secondary { background: linear-gradient(135deg, #f5c96f, #f28f3b); }
+    button:disabled { opacity: 0.55; cursor: wait; }
+    .status {
+      min-height: 24px;
+      color: #9fe8ff;
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left; vertical-align: top; }
+    th { color: #8fe0ff; font-size: 14px; }
+    td strong { display: block; margin-bottom: 4px; }
+    .caption { color: #9fb0c8; font-size: 12px; margin-top: 4px; }
+    .meter { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.1); overflow: hidden; margin-top: 8px; }
+    .meter span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #4cb4ff, #7de6ff); }
+    .note { margin-top: 12px; color: #9fb0c8; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>TinyCrypto Local Benchmark Dashboard</h1>
+    <p class="subtitle">A lightweight demo for comparing desktop crypto against RP2040 bare-metal execution.</p>
+    <div>
+      <span class="pill">Platform: Windows</span>
+      <span class="pill">Engine: stdlib + optional cryptography</span>
+    </div>
+    <div class="controls">
+      <button id="traditional-btn">Run traditional method</button>
+      <button id="tinycrypto-btn" class="secondary">Run TinyCrypto method</button>
+    </div>
+    <div id="status" class="status">Select a benchmark to run.</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Operation</th>
+          <th>Traditional (Python/OpenSSL, running on this computer's CPU)</th>
+          <th>TinyCrypto (running on RP2040 bare-metal, no OS)</th>
+        </tr>
+      </thead>
+      <tbody id="results-body">
+        <tr><td colspan="3">No results yet.</td></tr>
+      </tbody>
+    </table>
+    <div id="engine-note" class="note"></div>
+  </div>
+  <script>
+    const state = { traditional: null, tinycrypto: null };
+    const statusEl = document.getElementById('status');
+    const bodyEl = document.getElementById('results-body');
+    const noteEl = document.getElementById('engine-note');
+
+    function setBusy(buttonId, busy) {
+      document.getElementById(buttonId).disabled = busy;
+    }
+
+    function updateView() {
+      if (!state.traditional || !state.tinycrypto) {
+        bodyEl.innerHTML = '<tr><td colspan="3">No results yet.</td></tr>';
+        noteEl.textContent = '';
+        return;
+      }
+
+      const rows = ['AES-256-CBC', 'SHA-256', 'Curve25519'];
+      const rowsHtml = rows.map((name) => {
+        const trad = state.traditional.measurements.find((item) => item.name === name);
+        const tiny = state.tinycrypto.measurements.find((item) => item.name === name);
+        const tradValue = trad ? `${trad.latency_us.toFixed(1)} us` : 'n/a';
+        const tinyValue = tiny ? `${tiny.latency_us.toFixed(1)} us` : 'n/a';
+        const tradBar = Math.max(6, Math.min(90, 6 + Math.log10(Math.max(1, trad ? trad.latency_us : 1)) * 12));
+        const tinyBar = Math.max(6, Math.min(90, 6 + Math.log10(Math.max(1, tiny ? tiny.latency_us : 1)) * 12));
+        return `<tr><td><strong>${name}</strong><div class="caption">Latency comparison</div></td><td><strong>${tradValue}</strong><div class="caption">${state.traditional.engine === 'cryptography' ? 'Real cryptography benchmark' : 'stdlib fallback'} </div><div class="meter"><span style="width:${tradBar}%"></span></div></td><td><strong>${tinyValue}</strong><div class="caption">${state.tinycrypto.source === 'live' ? 'Live Pico feed' : 'Cached hardware measurement'}</div><div class="meter"><span style="width:${tinyBar}%"></span></div></td></tr>`;
+      }).join('');
+      bodyEl.innerHTML = rowsHtml;
+      noteEl.innerHTML = `<strong>Traditional:</strong> ${state.traditional.note}<br /><strong>TinyCrypto:</strong> ${state.tinycrypto.note}`;
+    }
+
+    async function runBenchmark(mode) {
+      setBusy(mode === 'traditional' ? 'traditional-btn' : 'tinycrypto-btn', true);
+      statusEl.textContent = 'Running benchmark…';
+      try {
+        const response = await fetch(`/api/benchmarks?mode=${mode}`);
+        const payload = await response.json();
+        state[mode === 'traditional' ? 'traditional' : 'tinycrypto'] = payload;
+        updateView();
+        statusEl.textContent = payload.note || 'Benchmark complete.';
+      } catch (error) {
+        statusEl.textContent = 'Benchmark failed: ' + error.message;
+      } finally {
+        setBusy(mode === 'traditional' ? 'traditional-btn' : 'tinycrypto-btn', false);
+      }
+    }
+
+    document.getElementById('traditional-btn').addEventListener('click', () => runBenchmark('traditional'));
+    document.getElementById('tinycrypto-btn').addEventListener('click', () => runBenchmark('tinycrypto'));
+  </script>
+</body>
+</html>

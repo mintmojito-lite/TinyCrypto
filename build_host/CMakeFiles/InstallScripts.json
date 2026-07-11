@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Tinycrypto/build_host/cmake_install.cmake",
+		"C:/Tinycrypto/build_host/_deps/googletest-build/cmake_install.cmake",
+		"C:/Tinycrypto/build_host/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"C:/Tinycrypto/build_host/_deps/googletest-build/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

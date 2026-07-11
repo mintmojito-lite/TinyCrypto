@@ -1,0 +1,124 @@
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\E495E25F205F333D836F6E300686D40E\ENC_BOOTLOADER_MBEDTLS-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Release -P C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/tmp/enc_bootloader_mbedtls-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/src/enc_bootloader_mbedtls-stamp/Release/enc_bootloader_mbedtls-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\E495E25F205F333D836F6E300686D40E\ENC_BOOTLOADER_MBEDTLS-DOWNLOAD.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/src/enc_bootloader_mbedtls-stamp/Release/enc_bootloader_mbedtls-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\E495E25F205F333D836F6E300686D40E\ENC_BOOTLOADER_MBEDTLS-UPDATE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/src/enc_bootloader_mbedtls-stamp/Release/enc_bootloader_mbedtls-update
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\E495E25F205F333D836F6E300686D40E\ENC_BOOTLOADER_MBEDTLS-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/src/enc_bootloader_mbedtls-stamp/Release/enc_bootloader_mbedtls-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\E495E25F205F333D836F6E300686D40E\ENC_BOOTLOADER_MBEDTLS-CONFIGURE.RULE
+setlocal
+cd C:\Tinycrypto\build_picotool\enc_bootloader_mbedtls
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" "-DCMAKE_MAKE_PROGRAM:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" -DPICO_SDK_PATH:FILEPATH=C:/Tinycrypto/pico-sdk -DUSE_PRECOMPILED:BOOL=true -DUSE_MBEDTLS=1 -DPICO_DEBUG_INFO_IN_RELEASE=OFF "-GVisual Studio 17 2022" "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools" -S C:/Tinycrypto/build_arm_new/_deps/picotool-src/enc_bootloader -B C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/src/enc_bootloader_mbedtls-stamp/Release/enc_bootloader_mbedtls-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\E495E25F205F333D836F6E300686D40E\ENC_BOOTLOADER_MBEDTLS-BUILD.RULE
+setlocal
+cd C:\Tinycrypto\build_picotool\enc_bootloader_mbedtls
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" --build . --config Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\E495E25F205F333D836F6E300686D40E\ENC_BOOTLOADER_MBEDTLS-INSTALL.RULE
+setlocal
+cd C:\Tinycrypto\build_picotool\enc_bootloader_mbedtls
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\629D039A56D933B9B2EB98B19D2DBAEE\ENC_BOOTLOADER_MBEDTLS-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Tinycrypto/build_picotool/CMakeFiles/Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Tinycrypto/build_picotool/CMakeFiles/Release/enc_bootloader_mbedtls-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Tinycrypto/build_picotool/enc_bootloader_mbedtls/src/enc_bootloader_mbedtls-stamp/Release/enc_bootloader_mbedtls-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_PICOTOOL\CMAKEFILES\6BD2ADF2FD538A879E00B596289449C1\ENC_BOOTLOADER_MBEDTLS.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\TINYCRYPTO\BUILD_ARM_NEW\_DEPS\PICOTOOL-SRC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Tinycrypto/build_arm_new/_deps/picotool-src -BC:/Tinycrypto/build_picotool --check-stamp-file C:/Tinycrypto/build_picotool/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\enc_bootloader\CMakeFiles\503a45760ef0cc1ea1a1a9a15ab626ce\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E12D8337-3EAF-31D3-8536-E6AE11EC3E1E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

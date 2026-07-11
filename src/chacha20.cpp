@@ -1,5 +1,6 @@
 #include "chacha20.hpp"
 #include "utils.hpp"
+#include "crypto_primitives.hpp"
 #include <cstring>
 
 #if defined(__x86_64__) || defined(_M_X64)
@@ -96,8 +97,8 @@ void ChaCha20::encrypt_scalar(const uint8_t* in, uint8_t* out, size_t len) {
         len -= chunk;
     }
     
-    secure_zero(state, sizeof(state));
-    secure_zero(block, sizeof(block));
+    explicit_bzero(state, sizeof(state));
+    explicit_bzero(block, sizeof(block));
 }
 
 #if defined(__x86_64__) || defined(_M_X64)
@@ -189,7 +190,7 @@ void ChaCha20::encrypt_avx2(const uint8_t* in, uint8_t* out, size_t len) {
         out += 256;
         len -= 256;
     }
-    secure_zero(block, sizeof(block));
+    explicit_bzero(block, sizeof(block));
     
     // Tail blocks
     if (len > 0) {

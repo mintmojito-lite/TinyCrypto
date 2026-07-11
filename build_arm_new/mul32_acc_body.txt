@@ -1,0 +1,54 @@
+﻿
+> 10000cfc:	b5f7      	push	{r0, r1, r2, r4, r5, r6, r7, lr}
+  10000cfe:	b29c      	uxth	r4, r3
+  10000d00:	0025      	movs	r5, r4
+  10000d02:	b297      	uxth	r7, r2
+  10000d04:	437d      	muls	r5, r7
+  10000d06:	46ac      	mov	ip, r5
+  10000d08:	0c12      	lsrs	r2, r2, #16
+  10000d0a:	0c1b      	lsrs	r3, r3, #16
+  10000d0c:	435f      	muls	r7, r3
+  10000d0e:	4354      	muls	r4, r2
+  10000d10:	19e4      	adds	r4, r4, r7
+  10000d12:	6806      	ldr	r6, [r0, #0]
+  10000d14:	0425      	lsls	r5, r4, #16
+  10000d16:	4465      	add	r5, ip
+  10000d18:	9601      	str	r6, [sp, #4]
+  10000d1a:	4353      	muls	r3, r2
+  10000d1c:	1976      	adds	r6, r6, r5
+  10000d1e:	6006      	str	r6, [r0, #0]
+  10000d20:	680a      	ldr	r2, [r1, #0]
+  10000d22:	4565      	cmp	r5, ip
+  10000d24:	41ad      	sbcs	r5, r5
+  10000d26:	189b      	adds	r3, r3, r2
+  10000d28:	0c22      	lsrs	r2, r4, #16
+  10000d2a:	42bc      	cmp	r4, r7
+  10000d2c:	41a4      	sbcs	r4, r4
+  10000d2e:	189b      	adds	r3, r3, r2
+  10000d30:	9a01      	ldr	r2, [sp, #4]
+  10000d32:	4264      	negs	r4, r4
+  10000d34:	4296      	cmp	r6, r2
+  10000d36:	41b6      	sbcs	r6, r6
+  10000d38:	0424      	lsls	r4, r4, #16
+  10000d3a:	426d      	negs	r5, r5
+  10000d3c:	191b      	adds	r3, r3, r4
+  10000d3e:	195b      	adds	r3, r3, r5
+  10000d40:	4276      	negs	r6, r6
+  10000d42:	199b      	adds	r3, r3, r6
+  10000d44:	600b      	str	r3, [r1, #0]
+  10000d46:	bdf7      	pop	{r0, r1, r2, r4, r5, r6, r7, pc}
+  
+  10000d48 <_ZN10tinycryptoL9umul32_64Emm.constprop.0>:
+  10000d48:	2113      	movs	r1, #19
+  10000d4a:	b283      	uxth	r3, r0
+  10000d4c:	0c00      	lsrs	r0, r0, #16
+  10000d4e:	434b      	muls	r3, r1
+  10000d50:	4341      	muls	r1, r0
+  10000d52:	0408      	lsls	r0, r1, #16
+  10000d54:	18c0      	adds	r0, r0, r3
+  10000d56:	4298      	cmp	r0, r3
+  10000d58:	419b      	sbcs	r3, r3
+  10000d5a:	0c09      	lsrs	r1, r1, #16
+  10000d5c:	425b      	negs	r3, r3
+
+

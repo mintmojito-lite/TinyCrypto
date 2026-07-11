@@ -56,8 +56,7 @@ inline uint32_t rotr32(uint32_t x, int n) {
 #endif
 }
 
-// Zero memory securely without being optimized out by compiler
-void secure_zero(void* ptr, std::size_t len);
+
 
 // Compare two byte arrays in constant time to prevent timing attacks
 inline bool constant_time_equal(const uint8_t* a, const uint8_t* b, std::size_t len) {
@@ -68,54 +67,7 @@ inline bool constant_time_equal(const uint8_t* a, const uint8_t* b, std::size_t 
     return diff == 0;
 }
 
-// RAII wrapper for a secure memory buffer that guarantees zeroing on scope exit
-template <typename T = uint8_t>
-class SecureBuffer {
-private:
-    T* m_data; // Using raw pointer to allow reading after destruction in tests, even though vector is safer, we'll malloc to prove it zeros. Or just use vector with custom allocator.
-    std::size_t m_size;
 
-public:
-    explicit SecureBuffer(std::size_t size) : m_size(size) {
-        m_data = new T[size]();
-    }
-
-    ~SecureBuffer() {
-        if (m_data) {
-            secure_zero(m_data, m_size * sizeof(T));
-            delete[] m_data;
-        }
-    }
-
-    // Delete copy constructors to prevent accidental duplication of secrets
-    SecureBuffer(const SecureBuffer&) = delete;
-    SecureBuffer& operator=(const SecureBuffer&) = delete;
-
-    SecureBuffer(SecureBuffer&& other) noexcept {
-        m_data = other.m_data;
-        m_size = other.m_size;
-        other.m_data = nullptr;
-        other.m_size = 0;
-    }
-
-    SecureBuffer& operator=(SecureBuffer&& other) noexcept {
-        if (this != &other) {
-            if (m_data) {
-                secure_zero(m_data, m_size * sizeof(T));
-                delete[] m_data;
-            }
-            m_data = other.m_data;
-            m_size = other.m_size;
-            other.m_data = nullptr;
-            other.m_size = 0;
-        }
-        return *this;
-    }
-
-    T* data() { return m_data; }
-    const T* data() const { return m_data; }
-    std::size_t size() const { return m_size; }
-};
 
 } // namespace utils
 } // namespace tinycrypto

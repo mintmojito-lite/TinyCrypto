@@ -1,109 +1,335 @@
-/**
- * bare-metal firmware entry point for ARM Cortex-M7 (QEMU mps2-an500)
- *
- * No OS.  No libc.  UART only.
- * -----------------------------------------------------------------------
- * MPS2-AN500 CMSDK APB UART0 base: 0x40004000
- *   Offset 0x00  UART_DATA   (byte to transmit)
- *   Offset 0x04  UART_STATE  (bit 0 = TX full / TX busy)
- *   Offset 0x08  UART_CTRL   (bit 0 = TX enable)
- * -----------------------------------------------------------------------
- */
+#include "pico/stdlib.h"
+#include <stdio.h>
+#include <string.h>
 
+#include "crypto_primitives.hpp"
+#include "aes256.hpp"
+#include "chacha20.hpp"
 #include "sha256.hpp"
-#include <cstdint>
+#include "curve25519.hpp"
 
-/* --------------------------------------------------------------------------
- * Vector table  –  must land at address 0x00000000 (start of FLASH)
- * -------------------------------------------------------------------------- */
-extern "C" {
-    void reset_handler() __attribute__((noreturn));
-    extern uint32_t __stack_top;
+using namespace tinycrypto;
 
-    __attribute__((section(".vector_table"), used))
-    void* const vector_table[2] = {
-        (void*)&__stack_top,
-        (void*)reset_handler,
-    };
-}
+extern uint32_t __StackLimit;
+extern uint32_t __StackBottom;
 
-/* --------------------------------------------------------------------------
- * CMSDK APB UART0 at 0x40004000
- *   DATA   +0x00  write byte to transmit
- *   STATE  +0x04  bit 0 = TX buffer full
- *   CTRL   +0x08  bit 0 = TX enable, bit 1 = RX enable
- * -------------------------------------------------------------------------- */
-struct CmsdkUart {
-    volatile uint32_t DATA;   // 0x00
-    volatile uint32_t STATE;  // 0x04
-    volatile uint32_t CTRL;   // 0x08
-    volatile uint32_t INTSTATUS; // 0x0C
-    volatile uint32_t BAUDDIV;   // 0x10
-};
+static void paint_stack_pattern(uint8_t pattern) {
+    uintptr_t stack_top = (uintptr_t)__builtin_frame_address(0);
+    uintptr_t stack_limit = (uintptr_t)&__StackLimit;
+    uintptr_t stack_bottom = (uintptr_t)&__StackBottom;
 
-static CmsdkUart* const UART0 = reinterpret_cast<CmsdkUart*>(0x40004000);
+    if (stack_top < stack_limit) stack_top = stack_limit;
+    if (stack_bottom < stack_limit) stack_bottom = stack_limit;
+    if (stack_bottom > stack_top) stack_bottom = stack_top;
 
-static void uart_init() {
-    UART0->BAUDDIV = 16;          // divisor for ~1MHz UART clock / 16 = 62500 baud
-    UART0->CTRL    = (1u << 0);   // TX enable
-}
-
-static void uart_putc(char c) {
-    while (UART0->STATE & 1u) {} // wait while TX full
-    UART0->DATA = static_cast<uint32_t>(c);
-}
-
-static void uart_puts(const char* s) {
-    while (*s) uart_putc(*s++);
-}
-
-/* --------------------------------------------------------------------------
- * Hex helpers
- * -------------------------------------------------------------------------- */
-static const char HEX[] = "0123456789abcdef";
-
-static void uart_hex_byte(uint8_t b) {
-    uart_putc(HEX[b >> 4]);
-    uart_putc(HEX[b & 0xF]);
-}
-
-/* --------------------------------------------------------------------------
- * .bss / .data init  (normally done by startup code)
- * -------------------------------------------------------------------------- */
-extern "C" {
-    extern uint32_t __bss_start, __bss_end;
-    extern uint32_t __data_start, __data_end, __data_load;
-}
-
-static void init_memory() {
-    for (uint32_t* p = &__bss_start; p < &__bss_end; ++p) *p = 0;
-    uint32_t* src = &__data_load;
-    for (uint32_t* dst = &__data_start; dst < &__data_end; ) *dst++ = *src++;
-}
-
-/* --------------------------------------------------------------------------
- * Firmware entry point
- * -------------------------------------------------------------------------- */
-extern "C" void reset_handler() {
-    init_memory();
-    uart_init();
-
-    uart_puts("\r\n=== TinyCrypto Bare-Metal Firmware ===\r\n");
-    uart_puts("Hashing: \"Hello Edge AI\"\r\n");
-
-    const char msg[] = "Hello Edge AI";
-    auto digest = tinycrypto::SHA256::hash(
-        reinterpret_cast<const uint8_t*>(msg),
-        sizeof(msg) - 1
-    );
-
-    uart_puts("SHA-256: ");
-    for (uint8_t byte : digest) {
-        uart_hex_byte(byte);
+    for (uintptr_t p = stack_limit; p < stack_top; ++p) {
+        *((volatile uint8_t*)p) = pattern;
     }
-    uart_puts("\r\n");
+}
 
-    uart_puts("=== DONE ===\r\n");
+static size_t measure_peak_stack_usage(const char* label, void (*fn)(void)) {
+    paint_stack_pattern(0xAA);
+    fn();
 
-    for (;;) {}
+    uintptr_t stack_top = (uintptr_t)__builtin_frame_address(0);
+    uintptr_t stack_limit = (uintptr_t)&__StackLimit;
+    uintptr_t stack_bottom = (uintptr_t)&__StackBottom;
+
+    if (stack_top < stack_limit) stack_top = stack_limit;
+    if (stack_bottom < stack_limit) stack_bottom = stack_limit;
+    if (stack_bottom > stack_top) stack_bottom = stack_top;
+
+    size_t peak = 0;
+    for (uintptr_t p = stack_limit; p < stack_top; ++p) {
+        if (*((volatile uint8_t*)p) != 0xAA) {
+            // First non-0xAA byte from bottom = deepest stack penetration.
+            // Peak usage = distance from current frame down to that point.
+            peak = (size_t)(stack_top - p);
+            break;
+        }
+    }
+
+    printf("[RAM] %s peak stack usage: %u bytes\n", label, (unsigned)peak);
+    return peak;
+}
+
+static void measure_curve25519_stack(void) {
+    const uint8_t scalar[32] = {
+        0xa5,0x46,0xe3,0x6b,0xf0,0x52,0x7c,0x9d,0x3b,0x16,0x15,0x4b,0x82,0x46,0x5e,0xdd,
+        0x62,0x14,0x4c,0x0a,0xc1,0xfc,0x5a,0x18,0x50,0x6a,0x22,0x44,0xba,0x44,0x9a,0xc4
+    };
+    const uint8_t point[32] = {
+        0xe6,0xdb,0x68,0x67,0x58,0x30,0x30,0xdb,0x35,0x94,0xc1,0xa4,0x24,0xb1,0x5f,0x7c,
+        0x72,0x66,0x24,0xec,0x26,0xb3,0x35,0x3b,0x10,0xa9,0x03,0xa6,0xd0,0xab,0x1c,0x4c
+    };
+    std::array<uint8_t, 32> s, p;
+    memcpy(s.data(), scalar, 32);
+    memcpy(p.data(), point, 32);
+    (void)curve25519(s, p);
+}
+
+static void measure_aes256_stack(void) {
+    uint8_t key[32] = {
+        0x60,0x3d,0xeb,0x10,0x15,0xca,0x71,0xbe,0x2b,0x73,0xae,0xf0,0x85,0x7d,0x77,0x81,
+        0x1f,0x35,0x2c,0x07,0x3b,0x61,0x08,0xd7,0x2d,0x98,0x10,0xa3,0x09,0x14,0xdf,0xf4
+    };
+    uint8_t iv[16] = {
+        0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f
+    };
+    uint8_t pt[32] = {
+        0x6b,0xc1,0xbe,0xe2,0x2e,0x40,0x9f,0x96,0xe9,0x3d,0x7e,0x11,0x73,0x93,0x17,0x2a,
+        0xae,0x2d,0x8a,0x57,0x1e,0x03,0xac,0x9c,0x9e,0xb7,0x6f,0xac,0x45,0xaf,0x8e,0x51
+    };
+    uint8_t out[32];
+    AES256_CBC_Context ctx;
+    aes256_cbc_init(&ctx, key, iv);
+    aes256_cbc_encrypt(&ctx, pt, out, 2);
+}
+
+static void measure_sha256_stack(void) {
+    const char* pt = "abc";
+    SHA256 ctx;
+    uint8_t out[32];
+    ctx.update(pt, 3);
+    ctx.finalize(out);
+}
+
+static void measure_chacha20_stack(void) {
+    uint8_t key[32] = {
+        0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,
+        0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1a,0x1b,0x1c,0x1d,0x1e,0x1f
+    };
+    uint8_t nonce[12] = {
+        0x00,0x00,0x00,0x09,0x00,0x00,0x00,0x4a,0x00,0x00,0x00,0x00
+    };
+    uint8_t pt[64] = {0};
+    uint8_t out[64];
+    ChaCha20 ctx(key, nonce, 1);
+    ctx.encrypt(pt, out, 64);
+}
+
+void print_hex(const char* label, const uint8_t* data, size_t len) {
+    if (label) printf("%s", label);
+    for (size_t i = 0; i < len; ++i) {
+        printf("%02x", data[i]);
+    }
+}
+
+bool compare_buffers(const uint8_t* a, const uint8_t* b, size_t len) {
+    bool match = true;
+    for (size_t i = 0; i < len; ++i) {
+        if (a[i] != b[i]) match = false;
+    }
+    return match;
+}
+
+void print_result(const char* name, bool pass, const uint8_t* expected, const uint8_t* got, size_t len) {
+    if (pass) {
+        printf("[PASS] %s\n", name);
+    } else {
+        printf("[FAIL] %s (expected: ", name);
+        print_hex(nullptr, expected, len);
+        printf(", got: ");
+        print_hex(nullptr, got, len);
+        printf(")\n");
+    }
+}
+
+void self_test() {
+    int passed = 0;
+    int total = 5;
+
+    // 1. AES-256-CBC
+    {
+        uint8_t key[32] = {
+            0x60, 0x3d, 0xeb, 0x10, 0x15, 0xca, 0x71, 0xbe, 0x2b, 0x73, 0xae, 0xf0, 0x85, 0x7d, 0x77, 0x81,
+            0x1f, 0x35, 0x2c, 0x07, 0x3b, 0x61, 0x08, 0xd7, 0x2d, 0x98, 0x10, 0xa3, 0x09, 0x14, 0xdf, 0xf4
+        };
+        uint8_t iv[16] = {
+            0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
+        };
+        uint8_t pt[32] = {
+            0x6b, 0xc1, 0xbe, 0xe2, 0x2e, 0x40, 0x9f, 0x96, 0xe9, 0x3d, 0x7e, 0x11, 0x73, 0x93, 0x17, 0x2a,
+            0xae, 0x2d, 0x8a, 0x57, 0x1e, 0x03, 0xac, 0x9c, 0x9e, 0xb7, 0x6f, 0xac, 0x45, 0xaf, 0x8e, 0x51
+        };
+        const uint8_t expected[32] = {
+            0xf5, 0x8c, 0x4c, 0x04, 0xd6, 0xe5, 0xf1, 0xba, 0x77, 0x9e, 0xab, 0xfb, 0x5f, 0x7b, 0xfb, 0xd6,
+            0x9c, 0xfc, 0x4e, 0x96, 0x7e, 0xdb, 0x80, 0x8d, 0x67, 0x9f, 0x77, 0x7b, 0xc6, 0x70, 0x2c, 0x7d
+        };
+        AES256_CBC_Context ctx;
+        aes256_cbc_init(&ctx, key, iv);
+        uint8_t out[32];
+        aes256_cbc_encrypt(&ctx, pt, out, 2);
+        
+        bool pass = compare_buffers(out, expected, 32);
+        print_result("AES-256-CBC", pass, expected, out, 32);
+        if (pass) passed++;
+    }
+
+    // 2. AES-256-ECB (Using ECB as the existing test vector didn't cover CTR)
+    {
+        uint8_t key[32] = {
+            0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,
+            0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1a,0x1b,0x1c,0x1d,0x1e,0x1f
+        };
+        uint8_t pt[16] = {
+            0x00,0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0xaa,0xbb,0xcc,0xdd,0xee,0xff
+        };
+        const uint8_t expected[16] = {
+            0x8e,0xa2,0xb7,0xca,0x51,0x67,0x45,0xbf,0xea,0xfc,0x49,0x90,0x4b,0x49,0x60,0x89
+        };
+        
+        std::array<uint8_t, 32> k;
+        memcpy(k.data(), key, 32);
+        Aes256Ctx ctx;
+        aes256_init(ctx, k);
+        uint8_t out[16];
+        aes256_encrypt_block(ctx, pt, out);
+        
+        bool pass = compare_buffers(out, expected, 16);
+        print_result("AES-256-ECB", pass, expected, out, 16);
+        if (pass) passed++;
+    }
+
+    // 3. ChaCha20
+    {
+        uint8_t key[32] = {
+            0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,
+            0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1a,0x1b,0x1c,0x1d,0x1e,0x1f
+        };
+        uint8_t nonce[12] = {
+            0x00,0x00,0x00,0x09,0x00,0x00,0x00,0x4a,0x00,0x00,0x00,0x00
+        };
+        uint8_t pt[64] = {0}; // 64 zeros
+        const uint8_t expected[64] = {
+            0x10,0xf1,0xe7,0xe4,0xd1,0x3b,0x59,0x15,0x50,0x0f,0xdd,0x1f,0xa3,0x20,0x71,0xc4,
+            0xc7,0xd1,0xf4,0xc7,0x33,0xc0,0x68,0x03,0x04,0x22,0xaa,0x9a,0xc3,0xd4,0x6c,0x4e,
+            0xd2,0x82,0x64,0x46,0x07,0x9f,0xaa,0x09,0x14,0xc2,0xd7,0x05,0xd9,0x8b,0x02,0xa2,
+            0xb5,0x12,0x9c,0xd1,0xde,0x16,0x4e,0xb9,0xcb,0xd0,0x83,0xe8,0xa2,0x50,0x3c,0x4e
+        };
+        
+        ChaCha20 ctx(key, nonce, 1);
+        uint8_t out[64];
+        ctx.encrypt(pt, out, 64);
+        
+        bool pass = compare_buffers(out, expected, 64);
+        print_result("ChaCha20", pass, expected, out, 64);
+        if (pass) passed++;
+    }
+
+    // 4. SHA-256
+    {
+        const char* pt = "abc";
+        const uint8_t expected[32] = {
+            0xba,0x78,0x16,0xbf,0x8f,0x01,0xcf,0xea,0x41,0x41,0x40,0xde,0x5d,0xae,0x22,0x23,
+            0xb0,0x03,0x61,0xa3,0x96,0x17,0x7a,0x9c,0xb4,0x10,0xff,0x61,0xf2,0x00,0x15,0xad
+        };
+        
+        SHA256 ctx;
+        ctx.update(pt, 3);
+        uint8_t out[32];
+        ctx.finalize(out);
+        
+        bool pass = compare_buffers(out, expected, 32);
+        print_result("SHA-256", pass, expected, out, 32);
+        if (pass) passed++;
+    }
+
+    // 5. Curve25519
+    {
+        const uint8_t scalar[32] = {
+            0xa5,0x46,0xe3,0x6b,0xf0,0x52,0x7c,0x9d,0x3b,0x16,0x15,0x4b,0x82,0x46,0x5e,0xdd,
+            0x62,0x14,0x4c,0x0a,0xc1,0xfc,0x5a,0x18,0x50,0x6a,0x22,0x44,0xba,0x44,0x9a,0xc4
+        };
+        const uint8_t point[32] = {
+            0xe6,0xdb,0x68,0x67,0x58,0x30,0x30,0xdb,0x35,0x94,0xc1,0xa4,0x24,0xb1,0x5f,0x7c,
+            0x72,0x66,0x24,0xec,0x26,0xb3,0x35,0x3b,0x10,0xa9,0x03,0xa6,0xd0,0xab,0x1c,0x4c
+        };
+        const uint8_t expected[32] = {
+            0xc3,0xda,0x55,0x37,0x9d,0xe9,0xc6,0x90,0x8e,0x94,0xea,0x4d,0xf2,0x8d,0x08,0x4f,
+            0x32,0xec,0xcf,0x03,0x49,0x1c,0x71,0xf7,0x54,0xb4,0x07,0x55,0x77,0xa2,0x85,0x52
+        };
+        
+        std::array<uint8_t, 32> s, p;
+        memcpy(s.data(), scalar, 32);
+        memcpy(p.data(), point, 32);
+        
+        auto res = curve25519(s, p);
+        
+        bool pass = compare_buffers(res.data(), expected, 32);
+        print_result("Curve25519", pass, expected, res.data(), 32);
+        if (pass) passed++;
+    }
+
+    printf("=== %d/%d PASSED ===\n", passed, total);
+}
+
+void benchmark_loop() {
+    uint8_t block64[64] = {0};
+    uint8_t key32[32] = {0};
+    uint8_t iv16[16] = {0};
+    unsigned iteration = 0;
+    
+    while (true) {
+        gpio_put(PICO_DEFAULT_LED_PIN, 1);
+
+        // AES-256-CBC
+        AES256_CBC_Context cbc_ctx;
+        aes256_cbc_init(&cbc_ctx, key32, iv16);
+        uint64_t t1 = time_us_64();
+        uint8_t cbc_out[16];
+        aes256_cbc_encrypt(&cbc_ctx, block64, cbc_out, 1);
+        uint64_t t2 = time_us_64();
+        uint64_t aes_us = t2 - t1;
+
+        // SHA-256
+        SHA256 sha;
+        uint64_t t3 = time_us_64();
+        sha.update(block64, 64);
+        uint8_t hash_out[32];
+        sha.finalize(hash_out);
+        uint64_t t4 = time_us_64();
+        uint64_t sha_us = t4 - t3;
+
+        // Curve25519
+        std::array<uint8_t, 32> scalar = {0};
+        std::array<uint8_t, 32> point = {9};
+        uint64_t t5 = time_us_64();
+        auto curve_out = curve25519(scalar, point);
+        uint64_t t6 = time_us_64();
+        uint64_t curve_us = t6 - t5;
+        
+        // Prevent compiler optimization of results
+        explicit_bzero(cbc_out, sizeof(cbc_out));
+        explicit_bzero(hash_out, sizeof(hash_out));
+        explicit_bzero(curve_out.data(), 32);
+
+        printf("[BENCH] AES-256-CBC: %llu us   SHA-256: %llu us   Curve25519: %llu us\n",
+               aes_us, sha_us, curve_us);
+
+        if (++iteration % 10 == 0) {
+            measure_peak_stack_usage("Curve25519", measure_curve25519_stack);
+            measure_peak_stack_usage("AES-256-CBC", measure_aes256_stack);
+            measure_peak_stack_usage("SHA-256", measure_sha256_stack);
+            measure_peak_stack_usage("ChaCha20", measure_chacha20_stack);
+        }
+
+        gpio_put(PICO_DEFAULT_LED_PIN, 0);
+        sleep_ms(3000);
+    }
+}
+
+int main() {
+    stdio_init_all();
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+    sleep_ms(2000); // Allow USB CDC to enumerate
+    
+    printf("\n--- TinyCrypto Boot Self-Test ---\n");
+    self_test();
+    printf("---------------------------------\n\n");
+    
+    benchmark_loop();
+    
+    return 0;
 }

@@ -1,5 +1,6 @@
 #include "sha256.hpp"
 #include "utils.hpp"
+#include "crypto_primitives.hpp"
 #include <cstring>
 
 namespace tinycrypto {
@@ -100,7 +101,7 @@ void SHA256::transform() {
     m_state[7] += h;
 
     // Erase intermediate state
-    secure_zero(W, sizeof(W));
+    explicit_bzero(W, sizeof(W));
 }
 
 void SHA256::update(const void* data, size_t len) {
@@ -148,8 +149,8 @@ void SHA256::finalize(uint8_t hash[HASH_SIZE]) {
     }
 
     // Clean sensitive internal state
-    secure_zero(m_state, sizeof(m_state));
-    secure_zero(m_buffer, sizeof(m_buffer));
+    explicit_bzero(m_state, sizeof(m_state));
+    explicit_bzero(m_buffer, sizeof(m_buffer));
 }
 
 std::array<uint8_t, SHA256::HASH_SIZE> SHA256::hash(const void* data, size_t len) {

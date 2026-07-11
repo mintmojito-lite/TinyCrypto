@@ -1,0 +1,10 @@
+^C:\TINYCRYPTO\BUILD_HOST\_DEPS\GOOGLETEST-SUBBUILD\CMAKEFILES\B81BA422C9FC2C2C8EC81DCB27B3C5E7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Tinycrypto/build_host/_deps/googletest-subbuild -BC:/Tinycrypto/build_host/_deps/googletest-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Tinycrypto/build_host/_deps/googletest-subbuild/googletest-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

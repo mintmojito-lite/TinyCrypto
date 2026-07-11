@@ -1,0 +1,188 @@
+Start testing: Jul 07 00:02 India Standard Time
+----------------------------------------------------------
+1/6 Testing: test_aes256
+1/6 Test: test_aes256
+Command: "C:/Tinycrypto/build_host/Debug/test_aes256.exe"
+Directory: C:/Tinycrypto/build_host
+"test_aes256" start time: Jul 07 00:02 India Standard Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Tinycrypto\build_host\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from AES256Test
+[ RUN      ] AES256Test.NIST_ECB_Encrypt
+[       OK ] AES256Test.NIST_ECB_Encrypt (0 ms)
+[ RUN      ] AES256Test.CBCMode
+[       OK ] AES256Test.CBCMode (0 ms)
+[----------] 2 tests from AES256Test (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (1 ms total)
+[  PASSED  ] 2 tests.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"test_aes256" end time: Jul 07 00:02 India Standard Time
+"test_aes256" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/6 Testing: test_chacha20
+2/6 Test: test_chacha20
+Command: "C:/Tinycrypto/build_host/Debug/test_chacha20.exe"
+Directory: C:/Tinycrypto/build_host
+"test_chacha20" start time: Jul 07 00:02 India Standard Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Tinycrypto\build_host\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from ChaCha20Test
+[ RUN      ] ChaCha20Test.RFC7539_Keystream
+[       OK ] ChaCha20Test.RFC7539_Keystream (0 ms)
+[ RUN      ] ChaCha20Test.RFC7539_Sunscreen
+[       OK ] ChaCha20Test.RFC7539_Sunscreen (0 ms)
+[----------] 2 tests from ChaCha20Test (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"test_chacha20" end time: Jul 07 00:02 India Standard Time
+"test_chacha20" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/6 Testing: test_curve25519
+3/6 Test: test_curve25519
+Command: "C:/Tinycrypto/build_host/Debug/test_curve25519.exe"
+Directory: C:/Tinycrypto/build_host
+"test_curve25519" start time: Jul 07 00:02 India Standard Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Tinycrypto\build_host\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from Curve25519_Test
+[ RUN      ] Curve25519_Test.RFC7748_Vector1
+[       OK ] Curve25519_Test.RFC7748_Vector1 (2 ms)
+[ RUN      ] Curve25519_Test.RFC7748_Alice
+[       OK ] Curve25519_Test.RFC7748_Alice (1 ms)
+[ RUN      ] Curve25519_Test.RFC7748_DiffieHellman
+[       OK ] Curve25519_Test.RFC7748_DiffieHellman (7 ms)
+[----------] 3 tests from Curve25519_Test (11 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (12 ms total)
+[  PASSED  ] 3 tests.
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"test_curve25519" end time: Jul 07 00:02 India Standard Time
+"test_curve25519" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/6 Testing: test_hmac
+4/6 Test: test_hmac
+Command: "C:/Tinycrypto/build_host/Debug/test_hmac.exe"
+Directory: C:/Tinycrypto/build_host
+"test_hmac" start time: Jul 07 00:02 India Standard Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Tinycrypto\build_host\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HMACTest
+[ RUN      ] HMACTest.RFC4231_Jefe
+[       OK ] HMACTest.RFC4231_Jefe (0 ms)
+[----------] 1 test from HMACTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"test_hmac" end time: Jul 07 00:02 India Standard Time
+"test_hmac" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/6 Testing: test_secure
+5/6 Test: test_secure
+Command: "C:/Tinycrypto/build_host/Debug/test_secure.exe"
+Directory: C:/Tinycrypto/build_host
+"test_secure" start time: Jul 07 00:02 India Standard Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Tinycrypto\build_host\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from SecureTest
+[ RUN      ] SecureTest.ConstantTimeEqual
+[       OK ] SecureTest.ConstantTimeEqual (0 ms)
+[ RUN      ] SecureTest.ExplicitBzeroWipesMemory
+[       OK ] SecureTest.ExplicitBzeroWipesMemory (0 ms)
+[----------] 2 tests from SecureTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"test_secure" end time: Jul 07 00:02 India Standard Time
+"test_secure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/6 Testing: test_sha256
+6/6 Test: test_sha256
+Command: "C:/Tinycrypto/build_host/Debug/test_sha256.exe"
+Directory: C:/Tinycrypto/build_host
+"test_sha256" start time: Jul 07 00:02 India Standard Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Tinycrypto\build_host\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 9 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from UtilsTest
+[ RUN      ] UtilsTest.ByteSwap32
+[       OK ] UtilsTest.ByteSwap32 (0 ms)
+[ RUN      ] UtilsTest.ByteSwap64
+[       OK ] UtilsTest.ByteSwap64 (0 ms)
+[ RUN      ] UtilsTest.RotLeft32
+[       OK ] UtilsTest.RotLeft32 (0 ms)
+[ RUN      ] UtilsTest.RotRight32
+[       OK ] UtilsTest.RotRight32 (0 ms)
+[ RUN      ] UtilsTest.SecureZero
+[       OK ] UtilsTest.SecureZero (0 ms)
+[----------] 5 tests from UtilsTest (0 ms total)
+
+[----------] 4 tests from SHA256Test
+[ RUN      ] SHA256Test.EmptyString
+[       OK ] SHA256Test.EmptyString (0 ms)
+[ RUN      ] SHA256Test.AbcString
+[       OK ] SHA256Test.AbcString (0 ms)
+[ RUN      ] SHA256Test.Msg448Bits
+[       OK ] SHA256Test.Msg448Bits (0 ms)
+[ RUN      ] SHA256Test.OneMillionA
+[       OK ] SHA256Test.OneMillionA (84 ms)
+[----------] 4 tests from SHA256Test (84 ms total)
+
+[----------] Global test environment tear-down
+[==========] 9 tests from 2 test suites ran. (85 ms total)
+[  PASSED  ] 9 tests.
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"test_sha256" end time: Jul 07 00:02 India Standard Time
+"test_sha256" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jul 07 00:02 India Standard Time

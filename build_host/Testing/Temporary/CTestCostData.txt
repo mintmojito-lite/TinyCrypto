@@ -1,0 +1,7 @@
+test_aes256 2 0.0484808
+test_chacha20 2 0.0475374
+test_curve25519 2 0.0473145
+test_hmac 2 0.0505961
+test_secure 1 0.092156
+test_sha256 2 0.0888584
+---

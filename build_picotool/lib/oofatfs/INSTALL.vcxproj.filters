@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e4f2a28b42ceda92b99e6a2e70e9b43a\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{20078FC2-763B-3ED4-B467-2EB7FB9409BB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Tinycrypto\build_picotool\x64\Release\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Tinycrypto\build_picotool\model\x64\Release\unreadable_rom_data</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Tinycrypto\build_picotool\x64\Release\enc_bootloader</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Tinycrypto\build_picotool\x64\Release\enc_bootloader_mbedtls</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Tinycrypto\build_picotool\x64\Release\embedded_data_no_libusb</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Tinycrypto\build_picotool\Release\picotool.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

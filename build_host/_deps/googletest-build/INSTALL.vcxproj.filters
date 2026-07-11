@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Tinycrypto\build_host\CMakeFiles\0a53aae6c31d8164d2983ecf9c69c9c0\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C4FB3582-2A00-3666-9F31-7BA87D933562}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

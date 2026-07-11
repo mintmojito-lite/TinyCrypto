@@ -1,5 +1,5 @@
 @echo off
-REM Run TinyCrypto bare-metal firmware in QEMU (mps2-an500 = Cortex-M7)
+REM Run TinyCrypto bare-metal firmware in QEMU (raspi-pico = Cortex-M0+)
 REM UART0 output goes directly to this terminal window.
 
 set QEMU="C:\Program Files\qemu\qemu-system-arm.exe"
@@ -20,8 +20,8 @@ echo Launching QEMU with %ELF% ...
 echo Press Ctrl+A then X to quit QEMU.
 echo.
 %QEMU% ^
-    -machine mps2-an500 ^
-    -cpu cortex-m7 ^
+    -machine raspi-pico ^
+    -cpu cortex-m0plus ^
     -m 16M ^
     -nographic ^
     -kernel %ELF%

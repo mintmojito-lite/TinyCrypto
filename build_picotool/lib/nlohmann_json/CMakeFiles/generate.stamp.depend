@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/ExternalProject.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
+C:/Tinycrypto/build_arm_new/_deps/picotool-src/lib/nlohmann_json/CMakeLists.txt

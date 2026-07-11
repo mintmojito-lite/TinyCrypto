@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "utils.hpp"
+#include "crypto_primitives.hpp"
 #include "sha256.hpp"
 #include <vector>
 
@@ -28,7 +29,7 @@ TEST(UtilsTest, RotRight32) {
 
 TEST(UtilsTest, SecureZero) {
     std::vector<uint8_t> buffer(100, 0xFF);
-    secure_zero(buffer.data(), buffer.size());
+    explicit_bzero(buffer.data(), buffer.size());
     for (auto val : buffer) {
         EXPECT_EQ(val, 0x00);
     }

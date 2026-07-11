@@ -1,3 +1,4 @@
+Launch the local benchmark dashboard with: python dashboard.py
 
 Performance Measurements
 Standard limits executed independently on logical limits (~2.6 GHz process architecture) scale gracefully across operations processing parallel buffers mathematically safely.

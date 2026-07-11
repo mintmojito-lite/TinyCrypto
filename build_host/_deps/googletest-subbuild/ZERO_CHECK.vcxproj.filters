@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Tinycrypto\build_host\_deps\googletest-subbuild\CMakeFiles\b81ba422c9fc2c2c8ec81dcb27b3c5e7\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{78A2B7EF-AC05-3868-81C4-72F938A22135}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

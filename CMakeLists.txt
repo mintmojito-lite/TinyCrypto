@@ -1,96 +1,100 @@
-cmake_minimum_required(VERSION 3.14)
-project(TinyCrypto VERSION 0.1.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.13)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+option(BUILD_HOST_TESTS "Build host-side unit tests" OFF)
 
-if(MSVC)
-    add_compile_options(/O2 /arch:AVX2 /W4 /GS /DYNAMICBASE /NXCOMPAT /guard:cf)
-    add_link_options(/DYNAMICBASE /NXCOMPAT /guard:cf)
-else()
-    add_compile_options(-O3 -Wall -Wextra -Wformat -Wformat-security)
-    if(NOT CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm|ARM)")
-        add_compile_options(-mavx2 -fstack-protector-strong)
+if(NOT BUILD_HOST_TESTS)
+    if(NOT DEFINED ENV{PICO_SDK_PATH} AND NOT DEFINED PICO_SDK_PATH)
+        message(FATAL_ERROR "PICO_SDK_PATH not set.")
     endif()
-    add_compile_definitions(_FORTIFY_SOURCE=2)
+    if(DEFINED ENV{PICO_SDK_PATH})
+        set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
+    endif()
+    # Pull in Raspberry Pi Pico SDK (must be before project())
+    include(${PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 endif()
 
-if(NOT CMAKE_SYSTEM_NAME STREQUAL "Generic")
-include(FetchContent)
+project(TinyCrypto C CXX ASM)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
-# Fetch GTest
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
-)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+if(BUILD_HOST_TESTS)
+    # ---------------------------------------------------------
+    # Host-side unit tests (built with your laptop's compiler, NOT arm-none-eabi)
+    # ---------------------------------------------------------
+    enable_testing()
 
-# Fetch Benchmark
-FetchContent_Declare(
-  googlebenchmark
-  URL https://github.com/google/benchmark/archive/refs/tags/v1.8.3.zip
-)
-set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googlebenchmark)
-endif()
-
-include_directories(include)
-
-# Main Library
-set(TINYCRYPTO_SOURCES
-    src/sha256.cpp
-    src/utils.cpp
-    src/chacha20.cpp
-    src/hmac.cpp
-    src/bigint.cpp
-    src/fe.cpp
-    src/curve25519.cpp
-    src/aes256.cpp
-)
-# We will use objective creation, ensuring static compilation
-if(TINYCRYPTO_SOURCES)
-    add_library(tinycrypto STATIC ${TINYCRYPTO_SOURCES})
-else()
-    # Dummy to allow CMake config before source files exist
-    add_library(tinycrypto INTERFACE)
-endif()
-target_include_directories(tinycrypto PUBLIC include)
-
-# Bare-metal firmware (ARM only)
-if(CMAKE_SYSTEM_NAME STREQUAL "Generic")
-    add_executable(firmware.elf src/main.cpp)
-    target_link_libraries(firmware.elf PRIVATE tinycrypto)
-    target_include_directories(firmware.elf PRIVATE include)
-    target_link_options(firmware.elf PRIVATE
-        -T${CMAKE_CURRENT_SOURCE_DIR}/linker.ld
-        -nostartfiles
-        --specs=nano.specs
-        -Wl,--gc-sections
-        -Wl,-Map=${CMAKE_BINARY_DIR}/firmware.map
+    include(FetchContent)
+    FetchContent_Declare(
+      googletest
+      GIT_REPOSITORY https://github.com/google/googletest.git
+      GIT_TAG        release-1.12.1
     )
-endif()
+    # For Windows: Prevent overriding the parent project's compiler/linker settings
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
 
-# Tests
-if(NOT CMAKE_SYSTEM_NAME STREQUAL "Generic")
-if(TRUE) # Always create test executable with explicit sources
-    add_executable(tinycrypto_tests
-    tests/test_sha256.cpp
-    tests/test_chacha20.cpp
-    tests/test_secure.cpp
-    tests/test_hmac.cpp
-    tests/test_curve25519.cpp
-    tests/test_aes256.cpp
-)
-    target_link_libraries(tinycrypto_tests PRIVATE tinycrypto gtest_main)
-    include(GoogleTest)
-    gtest_discover_tests(tinycrypto_tests)
-endif()
+    file(GLOB TINYCRYPTO_TEST_SOURCES "tests/*.cpp")
+    file(GLOB TINYCRYPTO_LIB_SOURCES "src/*.cpp")
+    list(FILTER TINYCRYPTO_LIB_SOURCES EXCLUDE REGEX ".*main\\.cpp$")
 
-# Benchmarks
-file(GLOB BENCH_SOURCES "benchmarks/*.cpp")
-if(BENCH_SOURCES)
-    add_executable(tinycrypto_bench ${BENCH_SOURCES})
-    target_link_libraries(tinycrypto_bench PRIVATE tinycrypto benchmark::benchmark_main)
-endif()
+    foreach(test_src ${TINYCRYPTO_TEST_SOURCES})
+        get_filename_component(test_name ${test_src} NAME_WE)
+        add_executable(${test_name} ${test_src} ${TINYCRYPTO_LIB_SOURCES})
+        target_include_directories(${test_name} PRIVATE include)
+        target_compile_features(${test_name} PRIVATE cxx_std_17)
+        target_link_libraries(${test_name} PRIVATE gtest_main)
+        add_test(NAME ${test_name} COMMAND ${test_name})
+    endforeach()
+else()
+    # Initialize the Raspberry Pi Pico SDK
+    pico_sdk_init()
+
+    # Gather all source files
+    file(GLOB TINYCRYPTO_SOURCES "src/*.cpp")
+
+    # Define the firmware executable
+    add_executable(firmware
+        ${TINYCRYPTO_SOURCES}
+    )
+
+    # Enforce Cortex-M0+ and memory model constraints
+    target_compile_options(firmware PRIVATE
+        -mcpu=cortex-m0plus
+        -mthumb
+        -Os
+        -Wall
+        -Wextra
+        -Werror
+        $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
+        $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
+    )
+
+    # NOTE: Per-file -O3 override was reverted because the inlined code
+    # (operator* grew to 15KB) overflows RP2040's 16KB XIP cache,
+    # causing 8x regression. The always_inline attributes in fe.cpp
+    # combined with -Os should still force inlining via the attribute.
+
+    target_include_directories(firmware PRIVATE include)
+
+    # Link Pico stdlib (provides minimal startup code without heavy standard libraries)
+    target_link_libraries(firmware PRIVATE pico_stdlib)
+
+    # Enable USB stdio and disable UART stdio for serial output over USB
+    pico_enable_stdio_usb(firmware 1)
+    pico_enable_stdio_uart(firmware 0)
+
+    # Poison dynamic allocation (malloc, calloc, new) using linker wrap options to guarantee stack-only memory model
+    target_link_options(firmware PRIVATE
+        "-Wl,--wrap=malloc"
+        "-Wl,--wrap=calloc"
+        "-Wl,--wrap=realloc"
+        "-Wl,--wrap=free"
+        "-Wl,--wrap=_Znwj" # operator new(unsigned int)
+        "-Wl,--wrap=_Znwm" # operator new(unsigned long)
+        "-Wl,--wrap=_ZdaPv" # operator delete
+        "-Wl,--wrap=_ZdlPv" # operator delete[]
+    )
+
+    # Generate the .uf2 binary for dragging and dropping onto the Raspberry Pi Pico
+    # pico_add_extra_outputs(firmware)
 endif()

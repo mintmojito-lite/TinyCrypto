@@ -1,0 +1,25 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Tinycrypto/build_picotool/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/lib/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/lib/nlohmann_json/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/lib/oofatfs/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/lib/littlefs/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/lib/whereami/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/model/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/errors/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/picoboot_connection/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/elf/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/elf2uf2/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/bintool/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/pico_binary_info/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/boot_uf2_headers/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/boot_picoboot_headers/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/boot_picobin_headers/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/pico_usb_reset_interface_headers/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/boot_bootrom_headers/cmake_install.cmake",
+		"C:/Tinycrypto/build_picotool/pico_platform/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

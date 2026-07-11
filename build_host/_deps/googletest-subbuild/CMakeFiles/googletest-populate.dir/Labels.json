@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/googletest-populate"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/b81ba422c9fc2c2c8ec81dcb27b3c5e7/googletest-populate.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/cd526e402d52fe1d013f992105853a99/googletest-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-build.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-download.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-install.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-test.rule"
+		},
+		{
+			"file" : "C:/Tinycrypto/build_host/_deps/googletest-subbuild/CMakeFiles/4cf0359026a9ee9cea83d74d04c8cbdc/googletest-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googletest-populate"
+		],
+		"name" : "googletest-populate"
+	}
+}

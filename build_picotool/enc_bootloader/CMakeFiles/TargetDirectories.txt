@@ -1,0 +1,2 @@
+C:/Tinycrypto/build_picotool/enc_bootloader/CMakeFiles/ALL_BUILD.dir
+C:/Tinycrypto/build_picotool/enc_bootloader/CMakeFiles/ZERO_CHECK.dir

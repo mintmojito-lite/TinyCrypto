@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\3a450710ff4c658e2b6a46cbb09ea505\rp2350_a2_rom_end.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\3a450710ff4c658e2b6a46cbb09ea505\rp2350_a3_rom_end.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\3a450710ff4c658e2b6a46cbb09ea505\rp2350_a4_rom_end.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\555d33cc9158e6faeae17f4f70ff7e23\unreadable_rom_data.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_arm_new\_deps\picotool-src\model\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Tinycrypto\build_picotool\model\CMakeFiles\unreadable_rom_data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{20078FC2-763B-3ED4-B467-2EB7FB9409BB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

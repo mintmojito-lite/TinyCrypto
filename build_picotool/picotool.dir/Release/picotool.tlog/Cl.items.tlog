@@ -1,0 +1,6 @@
+C:\Tinycrypto\build_picotool\data_locs.cpp;C:\Tinycrypto\build_picotool\picotool.dir\Release\data_locs.obj
+C:\Tinycrypto\build_arm_new\_deps\picotool-src\get_enc_bootloader.cpp;C:\Tinycrypto\build_picotool\picotool.dir\Release\get_enc_bootloader.obj
+C:\Tinycrypto\build_arm_new\_deps\picotool-src\no_otp.cpp;C:\Tinycrypto\build_picotool\picotool.dir\Release\no_otp.obj
+C:\Tinycrypto\build_arm_new\_deps\picotool-src\main.cpp;C:\Tinycrypto\build_picotool\picotool.dir\Release\main.obj
+C:\Tinycrypto\build_arm_new\_deps\picotool-src\lib\whereami\whereami.c;C:\Tinycrypto\build_picotool\picotool.dir\Release\whereami.obj
+C:\Tinycrypto\build_arm_new\_deps\picotool-src\lib\whereami\whereami++.cpp;C:\Tinycrypto\build_picotool\picotool.dir\Release\whereami++.obj

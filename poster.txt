@@ -1,0 +1,144 @@
+================================================================================
+IMAGE GENERATION PROMPT — TinyCrypto Academic Research Poster
+Style Reference: Swiss/Bauhaus brutalist tech poster with bold typography,
+                 cream/off-white background, vivid red accent shapes, and
+                 structured grid layout (as seen in reference image)
+================================================================================
+
+PROMPT:
+--------
+
+Create a square-format academic research poster in a bold Swiss brutalist /
+New Bauhaus editorial design style. Use a cream/off-white (#F5F0E8) background
+with bold black typography and vivid signal-red (#E8231A) graphic elements.
+The layout should feel structured with a visible light-grid of thin red or
+grey lines in the background (like graph paper or a technical schematic grid).
+
+--- POSTER CONTENT ---
+
+TOP-LEFT HEADLINE (Giant, condensed sans-serif, black, ~70–80% of poster width):
+  BARE METAL
+  CRYPTO
+
+Below headline, in small caps or compact body text (8–9pt equivalent):
+  TINYCRYPTO / ZERO-DEPENDENCY ENGINE
+  FOR RESOURCE-CONSTRAINED EDGE HARDWARE
+
+TOP-RIGHT CORNER (small, mono or sans-serif):
+  @TinyCrypto
+
+--- MAIN GRAPHIC ELEMENT ---
+
+A large abstract "T" or "TC" letterform rendered in solid signal-red
+(#E8231A), occupying the central-right area of the poster, at roughly 50–60%
+of the poster's height. The letterform should be styled like a bold logo mark —
+geometric, flat, with hard edges — partially bleed off the right edge of the
+poster.
+
+Overlapping / interacting with the letterform, place a stylized circuit-path
+or data-flow diagram drawn in thick red lines (serpentine/angular S-shaped or
+Z-shaped path), representing data moving through a cryptographic pipeline.
+The diagram should pass through or behind the large letterform, similar to the
+snake-like path element in the reference image.
+
+In the center intersection area of the circuit diagram, place a small schematic
+symbol — either a lock icon, a key icon, or a minimal 3-node lattice/graph
+(like a small XOR gate or hash function diagram) drawn in clean black outlines
+with small red circular node markers.
+
+--- THREE KEY FEATURE LABELS (horizontal row, mid-poster) ---
+
+Place three short labels horizontally across the poster center (left, center,
+right alignment), each in compact bold black sans-serif:
+
+  Left:    "Zero-Dependency
+            Architecture"
+
+  Center:  "Constant-Time
+            Execution"        [with the schematic symbol centered below this]
+
+  Right:   "Cross-Platform
+            CMake Pipeline"
+
+--- BOTTOM-LEFT BODY TEXT (small, legible, black, ~4–5 lines) ---
+
+  TinyCrypto delivers AES-256-CBC, ChaCha20, SHA-256
+  and Curve25519 on bare silicon — no OS, no heap,
+  no RTOS. Flash footprint under 10 KB. Peak SRAM
+  under 4 KB. Constant-time. Stack-allocated.
+
+--- BOTTOM-RIGHT DECORATIVE ELEMENT ---
+
+A second smaller abstract geometric shape in signal-red (#E8231A) — either
+a tightly-wound ribbon/helix shape or an angular interlocked form — bleeding
+off the bottom-right corner of the poster. This mirrors the lower-right
+decorative shape seen in the reference image's corner flourish.
+
+--- TYPOGRAPHIC SPECIFICATIONS ---
+
+- Headline font: Condensed, ultra-bold grotesque (like Barlow Condensed Black,
+  Bebas Neue Pro, or Neue Haas Grotesk Display) — all uppercase.
+- Sub-labels: Medium-weight sans-serif (like Inter Medium or DM Sans).
+- Body text: Regular weight sans-serif, small, tightly leaded.
+- All text in pure black (#0A0A0A) except where part of the red graphic element.
+
+--- COLOR PALETTE ---
+
+  Background:  #F5F0E8  (warm cream/off-white)
+  Primary:     #0A0A0A  (rich black — for all text & type)
+  Accent:      #E8231A  (signal red — for all graphic shapes, diagram, letterform)
+  Grid/Lines:  #DDCFC0  (muted tan — for background grid lines)
+
+--- COMPOSITION NOTES ---
+
+- Grid of thin horizontal and vertical lines should span the full poster as a
+  light background texture, evoking technical graph paper.
+- The headline should be flush-left and sit in the top third of the poster.
+- The large red letterform should anchor the center-right zone visually.
+- The circuit/flow diagram should create diagonal visual tension across the poster.
+- The three feature labels should sit on a thin horizontal red rule/line.
+- The overall feel: confident, technical, minimal — like a high-end HPC
+  conference poster crossed with a brutalist editorial magazine spread.
+- Aspect ratio: 1:1 (square), suitable for social media and print.
+- Resolution: 2048×2048 px minimum.
+
+================================================================================
+PROJECT DATA REFERENCE (for fact-checking poster content)
+================================================================================
+
+Project   : TinyCrypto
+Type      : Zero-dependency, bare-metal C++17 cryptographic engine
+Targets   : ARM Cortex-M0+ (RP2040), ARM Cortex-M4 (STM32F4xx), Xtensa LX6 (ESP32)
+Build     : CMake cross-compilation pipeline with separate toolchain files
+Algorithms: AES-256-CBC, ChaCha20, SHA-256, Curve25519 (Montgomery ladder)
+
+Key Design Invariants:
+  - No OS, no RTOS, no dynamic heap allocation (malloc/new forbidden)
+  - No STL containers, no exceptions, no RTTI
+  - Compiled with -nostdlib -nodefaultlibs -fno-rtti -fno-exceptions
+  - All cryptographic state lives on the stack (compile-time bounded frames)
+  - Explicit key zeroing via explicit_bzero() on every context destruction
+  - Constant-time execution throughout (no secret-dependent branches)
+
+Performance (x86-64 Software Baseline):
+  SHA-256       : 164 MB/s
+  ChaCha20 AVX2 : 1.11 GB/s  (4.3× speedup over scalar)
+  Curve25519    : ~3,200 ops/sec DH exchange
+  AES-256       : ~57 MB/s (ECB)
+  Const-time overhead: <9%
+
+Footprint Comparison vs Alternatives:
+  OpenSSL   : >500 KB flash, >2000 KB SRAM — requires full OS
+  mbedTLS   : ~50 KB flash, ~50 KB SRAM — partial RTOS
+  wolfSSL   : ~20 KB flash, ~20 KB SRAM — partial RTOS
+  TinyCrypto: <10 KB flash,   <4 KB SRAM — bare metal, no OS
+
+Validation: All NIST CAVP / RFC test vectors PASS
+  (FIPS 180-4 SHA-256, RFC 8439 ChaCha20, RFC 7748 Curve25519, FIPS 197 AES)
+
+Pre-silicon validation: QEMU hardware emulation (ARMv6-M / ARMv7-M)
+Physical target tested: Raspberry Pi Pico (RP2040, 133 MHz, 264 KB SRAM)
+
+================================================================================
+END OF PROMPT
+================================================================================

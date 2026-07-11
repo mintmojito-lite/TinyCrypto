@@ -1,0 +1,10 @@
+^C:\TINYCRYPTO\BUILD_HOST\CMAKEFILES\36B78DAA94D460083ED6C68E9F375C88\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Tinycrypto -BC:/Tinycrypto/build_host --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Tinycrypto/build_host/TinyCrypto.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

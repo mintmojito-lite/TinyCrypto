@@ -1,0 +1,15 @@
+﻿
+  10002e20:	22fa      	movs	r2, #250	@ 0xfa
+  10002e22:	b510      	push	{r4, lr}
+  10002e24:	2300      	movs	r3, #0
+  10002e26:	0092      	lsls	r2, r2, #2
+  10002e28:	2100      	movs	r1, #0
+> 10002e2a:	f001 f90f 	bl	1000404c <__wrap___aeabi_lmul>
+  20000196:	000f      	movs	r7, r1
+  20000198:	2300      	movs	r3, #0
+  2000019a:	0092      	lsls	r2, r2, #2
+  2000019c:	0028      	movs	r0, r5
+  2000019e:	2100      	movs	r1, #0
+> 200001a0:	f000 fca6 	bl	20000af0 <____wrap___aeabi_lmul_veneer>
+
+

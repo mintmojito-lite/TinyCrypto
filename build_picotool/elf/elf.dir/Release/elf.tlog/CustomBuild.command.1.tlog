@@ -1,0 +1,10 @@
+^C:\TINYCRYPTO\BUILD_ARM_NEW\_DEPS\PICOTOOL-SRC\ELF\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Tinycrypto/build_arm_new/_deps/picotool-src -BC:/Tinycrypto/build_picotool --check-stamp-file C:/Tinycrypto/build_picotool/elf/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

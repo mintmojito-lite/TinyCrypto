@@ -38,3 +38,19 @@ TEST(AES256Test, NIST_ECB_Encrypt) {
     
     EXPECT_EQ(bytes_to_hex(out, 16), "8ea2b7ca516745bfeafc49904b496089");
 }
+
+#include "crypto_primitives.hpp"
+
+TEST(AES256Test, CBCMode) {
+    auto key_bytes = hex_to_bytes("603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4");
+    auto iv_bytes = hex_to_bytes("000102030405060708090a0b0c0d0e0f");
+    auto pt_bytes = hex_to_bytes("6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e51");
+    
+    AES256_CBC_Context ctx;
+    aes256_cbc_init(&ctx, key_bytes.data(), iv_bytes.data());
+    
+    uint8_t out[32];
+    aes256_cbc_encrypt(&ctx, pt_bytes.data(), out, 2);
+    
+    EXPECT_EQ(bytes_to_hex(out, 32), "f58c4c04d6e5f1ba779eabfb5f7bfbd69cfc4e967edb808d679f777bc6702c7d");
+}

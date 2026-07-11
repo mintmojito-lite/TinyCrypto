@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e495e25f205f333d836f6e300686d40e\enc_bootloader_mbedtls-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e495e25f205f333d836f6e300686d40e\enc_bootloader_mbedtls-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e495e25f205f333d836f6e300686d40e\enc_bootloader_mbedtls-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e495e25f205f333d836f6e300686d40e\enc_bootloader_mbedtls-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e495e25f205f333d836f6e300686d40e\enc_bootloader_mbedtls-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e495e25f205f333d836f6e300686d40e\enc_bootloader_mbedtls-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\e495e25f205f333d836f6e300686d40e\enc_bootloader_mbedtls-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\629d039a56d933b9b2eb98b19d2dbaee\enc_bootloader_mbedtls-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_picotool\CMakeFiles\6bd2adf2fd538a879e00b596289449c1\enc_bootloader_mbedtls.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Tinycrypto\build_arm_new\_deps\picotool-src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Tinycrypto\build_picotool\CMakeFiles\enc_bootloader_mbedtls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{20078FC2-763B-3ED4-B467-2EB7FB9409BB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

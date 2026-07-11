@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Tinycrypto\build_arm_new\_deps\picotool-src\elf2uf2\elf2uf2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Tinycrypto\build_arm_new\_deps\picotool-src\elf2uf2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1AF59D25-FD1D-367F-B848-59EDD706CB0F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

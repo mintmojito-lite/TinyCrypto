@@ -1,0 +1,552 @@
+﻿
+> 10000a88:	f000 ffe2 	bl	10001a50 <_ZN10tinycrypto2Fe10from_bytesEPKh>
+  10000a8c:	2228      	movs	r2, #40	@ 0x28
+  10000a8e:	a914      	add	r1, sp, #80	@ 0x50
+> 10000af8:	f000 ff9a 	bl	10001a30 <_ZN10tinycrypto2Fe18conditionally_swapERS0_l>
+  10000afc:	002a      	movs	r2, r5
+  10000afe:	ad02      	add	r5, sp, #8
+> 10000b06:	f000 ff93 	bl	10001a30 <_ZN10tinycrypto2Fe18conditionally_swapERS0_l>
+  10000b0a:	aa28      	add	r2, sp, #160	@ 0xa0
+  10000b0c:	a91e      	add	r1, sp, #120	@ 0x78
+> 10000c28:	f000 ff02 	bl	10001a30 <_ZN10tinycrypto2Fe18conditionally_swapERS0_l>
+  10000c2c:	0022      	movs	r2, r4
+  10000c2e:	a93c      	add	r1, sp, #240	@ 0xf0
+> 10000c32:	f000 fefd 	bl	10001a30 <_ZN10tinycrypto2Fe18conditionally_swapERS0_l>
+  10000c36:	a928      	add	r1, sp, #160	@ 0xa0
+  10000c38:	a8a0      	add	r0, sp, #640	@ 0x280
+> 10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>:
+  10000cfc:	b5f7      	push	{r0, r1, r2, r4, r5, r6, r7, lr}
+  10000cfe:	b29c      	uxth	r4, r3
+> 10000d48 <_ZN10tinycryptoL9umul32_64Emm.constprop.0>:
+  10000d48:	2113      	movs	r1, #19
+  10000d4a:	b283      	uxth	r3, r0
+> 10000d62 <_ZN10tinycrypto2FeC1Ev>:
+  10000d62:	b510      	push	{r4, lr}
+  10000d64:	0004      	movs	r4, r0
+> 10000d7a:	f7ff fff2 	bl	10000d62 <_ZN10tinycrypto2FeC1Ev>
+  10000d7e:	2300      	movs	r3, #0
+  10000d80:	58f2      	ldr	r2, [r6, r3]
+> 10000d9a:	f7ff ffe2 	bl	10000d62 <_ZN10tinycrypto2FeC1Ev>
+  10000d9e:	2300      	movs	r3, #0
+  10000da0:	58f2      	ldr	r2, [r6, r3]
+> 10000e22:	f7ff ff6b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000e26:	9b51      	ldr	r3, [sp, #324]	@ 0x144
+  10000e28:	0031      	movs	r1, r6
+> 10000e34:	f7ff ff62 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000e38:	9b34      	ldr	r3, [sp, #208]	@ 0xd0
+  10000e3a:	0031      	movs	r1, r6
+> 10000e46:	f7ff ff59 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000e4a:	9b53      	ldr	r3, [sp, #332]	@ 0x14c
+  10000e4c:	0031      	movs	r1, r6
+> 10000e58:	f7ff ff50 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000e5c:	9b36      	ldr	r3, [sp, #216]	@ 0xd8
+  10000e5e:	0031      	movs	r1, r6
+> 10000e6a:	f7ff ff47 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000e6e:	9b55      	ldr	r3, [sp, #340]	@ 0x154
+  10000e70:	0031      	movs	r1, r6
+> 10000e7c:	f7ff ff3e 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000e80:	9b38      	ldr	r3, [sp, #224]	@ 0xe0
+  10000e82:	0031      	movs	r1, r6
+> 10000e8e:	f7ff ff35 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000e92:	9b57      	ldr	r3, [sp, #348]	@ 0x15c
+  10000e94:	0031      	movs	r1, r6
+> 10000ea0:	f7ff ff2c 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000ea4:	9b3a      	ldr	r3, [sp, #232]	@ 0xe8
+  10000ea6:	0031      	movs	r1, r6
+> 10000eb2:	f7ff ff23 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000eb6:	9b59      	ldr	r3, [sp, #356]	@ 0x164
+  10000eb8:	0031      	movs	r1, r6
+> 10000ec2:	f7ff ff1b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000ec6:	9c3d      	ldr	r4, [sp, #244]	@ 0xf4
+  10000ec8:	9a00      	ldr	r2, [sp, #0]
+> 10000ed4:	f7ff ff12 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000ed8:	9b33      	ldr	r3, [sp, #204]	@ 0xcc
+  10000eda:	a965      	add	r1, sp, #404	@ 0x194
+> 10000ee4:	f7ff ff0a 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000ee8:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  10000eea:	9a04      	ldr	r2, [sp, #16]
+> 10000ef0:	f7ff ff04 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000ef4:	9b35      	ldr	r3, [sp, #212]	@ 0xd4
+  10000ef6:	a965      	add	r1, sp, #404	@ 0x194
+> 10000f00:	f7ff fefc 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f04:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  10000f06:	9a07      	ldr	r2, [sp, #28]
+> 10000f0c:	f7ff fef6 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f10:	9b37      	ldr	r3, [sp, #220]	@ 0xdc
+  10000f12:	a965      	add	r1, sp, #404	@ 0x194
+> 10000f1c:	f7ff feee 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f20:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  10000f22:	9a08      	ldr	r2, [sp, #32]
+> 10000f28:	f7ff fee8 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f2c:	9b39      	ldr	r3, [sp, #228]	@ 0xe4
+  10000f2e:	a965      	add	r1, sp, #404	@ 0x194
+> 10000f38:	f7ff fee0 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f3c:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  10000f3e:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 10000f44:	f7ff feda 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f48:	9b3b      	ldr	r3, [sp, #236]	@ 0xec
+  10000f4a:	a965      	add	r1, sp, #404	@ 0x194
+> 10000f54:	f7ff fed2 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f58:	9b3e      	ldr	r3, [sp, #248]	@ 0xf8
+  10000f5a:	9a00      	ldr	r2, [sp, #0]
+> 10000f66:	f7ff fec9 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f6a:	0023      	movs	r3, r4
+  10000f6c:	9a12      	ldr	r2, [sp, #72]	@ 0x48
+> 10000f72:	f7ff fec3 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f76:	9b02      	ldr	r3, [sp, #8]
+  10000f78:	9a04      	ldr	r2, [sp, #16]
+> 10000f7e:	f7ff febd 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f82:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  10000f84:	9a13      	ldr	r2, [sp, #76]	@ 0x4c
+> 10000f8a:	f7ff feb7 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f8e:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  10000f90:	9a07      	ldr	r2, [sp, #28]
+> 10000f96:	f7ff feb1 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000f9a:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  10000f9c:	9a14      	ldr	r2, [sp, #80]	@ 0x50
+> 10000fa2:	f7ff feab 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000fa6:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  10000fa8:	9a08      	ldr	r2, [sp, #32]
+> 10000fae:	f7ff fea5 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000fb2:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  10000fb4:	9a16      	ldr	r2, [sp, #88]	@ 0x58
+> 10000fba:	f7ff fe9f 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000fbe:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+  10000fc0:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 10000fc6:	f7ff fe99 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000fca:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  10000fcc:	9a17      	ldr	r2, [sp, #92]	@ 0x5c
+> 10000fd2:	f7ff fe93 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000fd6:	9b3f      	ldr	r3, [sp, #252]	@ 0xfc
+  10000fd8:	9a00      	ldr	r2, [sp, #0]
+> 10000fe4:	f7ff fe8a 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000fe8:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  10000fea:	9a18      	ldr	r2, [sp, #96]	@ 0x60
+> 10000ff0:	f7ff fe84 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10000ff4:	0023      	movs	r3, r4
+  10000ff6:	9a04      	ldr	r2, [sp, #16]
+> 10000ffc:	f7ff fe7e 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001000:	9b02      	ldr	r3, [sp, #8]
+  10001002:	9a19      	ldr	r2, [sp, #100]	@ 0x64
+> 10001008:	f7ff fe78 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000100c:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  1000100e:	9a07      	ldr	r2, [sp, #28]
+> 10001014:	f7ff fe72 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001018:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  1000101a:	9a1a      	ldr	r2, [sp, #104]	@ 0x68
+> 10001020:	f7ff fe6c 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001024:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  10001026:	9a08      	ldr	r2, [sp, #32]
+> 1000102c:	f7ff fe66 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001030:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  10001032:	9a1b      	ldr	r2, [sp, #108]	@ 0x6c
+> 10001038:	f7ff fe60 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000103c:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  1000103e:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 10001044:	f7ff fe5a 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001048:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+  1000104a:	9a1c      	ldr	r2, [sp, #112]	@ 0x70
+> 10001050:	f7ff fe54 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001054:	9b40      	ldr	r3, [sp, #256]	@ 0x100
+  10001056:	9a00      	ldr	r2, [sp, #0]
+> 10001062:	f7ff fe4b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001066:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  10001068:	9a12      	ldr	r2, [sp, #72]	@ 0x48
+> 1000106e:	f7ff fe45 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001072:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  10001074:	9a04      	ldr	r2, [sp, #16]
+> 1000107a:	f7ff fe3f 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000107e:	0023      	movs	r3, r4
+  10001080:	9a13      	ldr	r2, [sp, #76]	@ 0x4c
+> 10001086:	f7ff fe39 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000108a:	9b02      	ldr	r3, [sp, #8]
+  1000108c:	9a07      	ldr	r2, [sp, #28]
+> 10001092:	f7ff fe33 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001096:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  10001098:	9a14      	ldr	r2, [sp, #80]	@ 0x50
+> 1000109e:	f7ff fe2d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010a2:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  100010a4:	9a08      	ldr	r2, [sp, #32]
+> 100010aa:	f7ff fe27 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010ae:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  100010b0:	9a16      	ldr	r2, [sp, #88]	@ 0x58
+> 100010b6:	f7ff fe21 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010ba:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  100010bc:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 100010c2:	f7ff fe1b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010c6:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  100010c8:	9a17      	ldr	r2, [sp, #92]	@ 0x5c
+> 100010ce:	f7ff fe15 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010d2:	9b41      	ldr	r3, [sp, #260]	@ 0x104
+  100010d4:	9a00      	ldr	r2, [sp, #0]
+> 100010e0:	f7ff fe0c 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010e4:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+  100010e6:	9a18      	ldr	r2, [sp, #96]	@ 0x60
+> 100010ec:	f7ff fe06 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010f0:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  100010f2:	9a04      	ldr	r2, [sp, #16]
+> 100010f8:	f7ff fe00 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100010fc:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  100010fe:	9a19      	ldr	r2, [sp, #100]	@ 0x64
+> 10001104:	f7ff fdfa 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001108:	0023      	movs	r3, r4
+  1000110a:	9a07      	ldr	r2, [sp, #28]
+> 10001110:	f7ff fdf4 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001114:	9b02      	ldr	r3, [sp, #8]
+  10001116:	9a1a      	ldr	r2, [sp, #104]	@ 0x68
+> 1000111c:	f7ff fdee 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001120:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  10001122:	9a08      	ldr	r2, [sp, #32]
+> 10001128:	f7ff fde8 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000112c:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  1000112e:	9a1b      	ldr	r2, [sp, #108]	@ 0x6c
+> 10001134:	f7ff fde2 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001138:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  1000113a:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 10001140:	f7ff fddc 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001144:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  10001146:	9a1c      	ldr	r2, [sp, #112]	@ 0x70
+> 1000114c:	f7ff fdd6 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001150:	9b42      	ldr	r3, [sp, #264]	@ 0x108
+  10001152:	9a00      	ldr	r2, [sp, #0]
+> 1000115e:	f7ff fdcd 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001162:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  10001164:	9a12      	ldr	r2, [sp, #72]	@ 0x48
+> 1000116a:	f7ff fdc7 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000116e:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+  10001170:	9a04      	ldr	r2, [sp, #16]
+> 10001176:	f7ff fdc1 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000117a:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  1000117c:	9a13      	ldr	r2, [sp, #76]	@ 0x4c
+> 10001182:	f7ff fdbb 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001186:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  10001188:	9a07      	ldr	r2, [sp, #28]
+> 1000118e:	f7ff fdb5 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001192:	0023      	movs	r3, r4
+  10001194:	9a14      	ldr	r2, [sp, #80]	@ 0x50
+> 1000119a:	f7ff fdaf 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000119e:	9b02      	ldr	r3, [sp, #8]
+  100011a0:	9a08      	ldr	r2, [sp, #32]
+> 100011a6:	f7ff fda9 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100011aa:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  100011ac:	9a16      	ldr	r2, [sp, #88]	@ 0x58
+> 100011b2:	f7ff fda3 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100011b6:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  100011b8:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 100011be:	f7ff fd9d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100011c2:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  100011c4:	9a17      	ldr	r2, [sp, #92]	@ 0x5c
+> 100011ca:	f7ff fd97 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100011ce:	9b43      	ldr	r3, [sp, #268]	@ 0x10c
+  100011d0:	9a00      	ldr	r2, [sp, #0]
+> 100011dc:	f7ff fd8e 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100011e0:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  100011e2:	9a18      	ldr	r2, [sp, #96]	@ 0x60
+> 100011e8:	f7ff fd88 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100011ec:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  100011ee:	9a04      	ldr	r2, [sp, #16]
+> 100011f4:	f7ff fd82 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100011f8:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+  100011fa:	9a19      	ldr	r2, [sp, #100]	@ 0x64
+> 10001200:	f7ff fd7c 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001204:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  10001206:	9a07      	ldr	r2, [sp, #28]
+> 1000120c:	f7ff fd76 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001210:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  10001212:	9a1a      	ldr	r2, [sp, #104]	@ 0x68
+> 10001218:	f7ff fd70 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000121c:	0023      	movs	r3, r4
+  1000121e:	9a08      	ldr	r2, [sp, #32]
+> 10001224:	f7ff fd6a 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001228:	9b02      	ldr	r3, [sp, #8]
+  1000122a:	9a1b      	ldr	r2, [sp, #108]	@ 0x6c
+> 10001230:	f7ff fd64 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001234:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  10001236:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 1000123c:	f7ff fd5e 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001240:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  10001242:	9a1c      	ldr	r2, [sp, #112]	@ 0x70
+> 10001248:	f7ff fd58 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000124c:	9b44      	ldr	r3, [sp, #272]	@ 0x110
+  1000124e:	9a00      	ldr	r2, [sp, #0]
+> 1000125a:	f7ff fd4f 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000125e:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  10001260:	9a12      	ldr	r2, [sp, #72]	@ 0x48
+> 10001266:	f7ff fd49 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000126a:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  1000126c:	9a04      	ldr	r2, [sp, #16]
+> 10001272:	f7ff fd43 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001276:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  10001278:	9a13      	ldr	r2, [sp, #76]	@ 0x4c
+> 1000127e:	f7ff fd3d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001282:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+  10001284:	9a07      	ldr	r2, [sp, #28]
+> 1000128a:	f7ff fd37 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000128e:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  10001290:	9a14      	ldr	r2, [sp, #80]	@ 0x50
+> 10001296:	f7ff fd31 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000129a:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  1000129c:	9a08      	ldr	r2, [sp, #32]
+> 100012a2:	f7ff fd2b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012a6:	0023      	movs	r3, r4
+  100012a8:	9a16      	ldr	r2, [sp, #88]	@ 0x58
+> 100012ae:	f7ff fd25 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012b2:	9b02      	ldr	r3, [sp, #8]
+  100012b4:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 100012ba:	f7ff fd1f 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012be:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  100012c0:	9a17      	ldr	r2, [sp, #92]	@ 0x5c
+> 100012c6:	f7ff fd19 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012ca:	9b45      	ldr	r3, [sp, #276]	@ 0x114
+  100012cc:	9a00      	ldr	r2, [sp, #0]
+> 100012d6:	f7ff fd11 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012da:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  100012dc:	9a18      	ldr	r2, [sp, #96]	@ 0x60
+> 100012e2:	f7ff fd0b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012e6:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  100012e8:	9a04      	ldr	r2, [sp, #16]
+> 100012ee:	f7ff fd05 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012f2:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  100012f4:	9a19      	ldr	r2, [sp, #100]	@ 0x64
+> 100012fa:	f7ff fcff 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100012fe:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+  10001300:	9a07      	ldr	r2, [sp, #28]
+> 10001306:	f7ff fcf9 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000130a:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+  1000130c:	9a1a      	ldr	r2, [sp, #104]	@ 0x68
+> 10001312:	f7ff fcf3 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001316:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  10001318:	9a08      	ldr	r2, [sp, #32]
+> 1000131e:	f7ff fced 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001322:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  10001324:	9a1b      	ldr	r2, [sp, #108]	@ 0x6c
+> 1000132a:	f7ff fce7 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000132e:	0023      	movs	r3, r4
+  10001330:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 10001336:	f7ff fce1 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000133a:	9b02      	ldr	r3, [sp, #8]
+  1000133c:	9a1c      	ldr	r2, [sp, #112]	@ 0x70
+> 10001342:	f7ff fcdb 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001346:	981d      	ldr	r0, [sp, #116]	@ 0x74
+> 10001348:	f7ff fd0b 	bl	10000d62 <_ZN10tinycrypto2FeC1Ev>
+  1000134c:	ab6e      	add	r3, sp, #440	@ 0x1b8
+  1000134e:	001a      	movs	r2, r3
+> 10001458:	f7ff fc76 	bl	10000d48 <_ZN10tinycryptoL9umul32_64Emm.constprop.0>
+  1000145c:	9b04      	ldr	r3, [sp, #16]
+  1000145e:	ac6e      	add	r4, sp, #440	@ 0x1b8
+> 10001522:	f7ff fbeb 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001526:	9b27      	ldr	r3, [sp, #156]	@ 0x9c
+  10001528:	0031      	movs	r1, r6
+> 10001534:	f7ff fbe2 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001538:	9b1e      	ldr	r3, [sp, #120]	@ 0x78
+  1000153a:	0031      	movs	r1, r6
+> 10001546:	f7ff fbd9 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000154a:	9b29      	ldr	r3, [sp, #164]	@ 0xa4
+  1000154c:	0031      	movs	r1, r6
+> 10001558:	f7ff fbd0 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000155c:	9b20      	ldr	r3, [sp, #128]	@ 0x80
+  1000155e:	0031      	movs	r1, r6
+> 1000156a:	f7ff fbc7 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000156e:	9b21      	ldr	r3, [sp, #132]	@ 0x84
+  10001570:	0031      	movs	r1, r6
+> 1000157a:	f7ff fbbf 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000157e:	9b26      	ldr	r3, [sp, #152]	@ 0x98
+  10001580:	9d1d      	ldr	r5, [sp, #116]	@ 0x74
+> 10001590:	f7ff fbb4 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001594:	9b04      	ldr	r3, [sp, #16]
+  10001596:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 1000159c:	f7ff fbae 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015a0:	9b1f      	ldr	r3, [sp, #124]	@ 0x7c
+  100015a2:	a94f      	add	r1, sp, #316	@ 0x13c
+> 100015ac:	f7ff fba6 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015b0:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  100015b2:	9a00      	ldr	r2, [sp, #0]
+> 100015b8:	f7ff fba0 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015bc:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  100015be:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+> 100015c4:	f7ff fb9a 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015c8:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+  100015ca:	9a07      	ldr	r2, [sp, #28]
+> 100015d4:	f7ff fb92 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015d8:	002b      	movs	r3, r5
+  100015da:	9a02      	ldr	r2, [sp, #8]
+> 100015e0:	f7ff fb8c 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015e4:	9b04      	ldr	r3, [sp, #16]
+  100015e6:	9a08      	ldr	r2, [sp, #32]
+> 100015ec:	f7ff fb86 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015f0:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  100015f2:	9a00      	ldr	r2, [sp, #0]
+> 100015f8:	f7ff fb80 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100015fc:	9b2b      	ldr	r3, [sp, #172]	@ 0xac
+  100015fe:	a950      	add	r1, sp, #320	@ 0x140
+> 10001608:	f7ff fb78 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000160c:	9d22      	ldr	r5, [sp, #136]	@ 0x88
+  1000160e:	9b36      	ldr	r3, [sp, #216]	@ 0xd8
+> 10001616:	f7ff fb71 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000161a:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  1000161c:	9a07      	ldr	r2, [sp, #28]
+> 10001626:	f7ff fb69 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000162a:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+  1000162c:	9a02      	ldr	r2, [sp, #8]
+> 10001632:	f7ff fb63 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001636:	9b04      	ldr	r3, [sp, #16]
+  10001638:	9a00      	ldr	r2, [sp, #0]
+> 1000163e:	f7ff fb5d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001642:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  10001644:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+> 1000164a:	f7ff fb57 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000164e:	002a      	movs	r2, r5
+  10001650:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+> 10001656:	f7ff fb51 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000165a:	9b00      	ldr	r3, [sp, #0]
+  1000165c:	9a07      	ldr	r2, [sp, #28]
+> 10001666:	f7ff fb49 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000166a:	9b08      	ldr	r3, [sp, #32]
+  1000166c:	9a02      	ldr	r2, [sp, #8]
+> 10001672:	f7ff fb43 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001676:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+  10001678:	a952      	add	r1, sp, #328	@ 0x148
+> 1000167e:	f7ff fb3d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001682:	9b04      	ldr	r3, [sp, #16]
+  10001684:	9a0f      	ldr	r2, [sp, #60]	@ 0x3c
+> 1000168a:	f7ff fb37 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000168e:	002a      	movs	r2, r5
+  10001690:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+> 10001696:	f7ff fb31 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000169a:	9b23      	ldr	r3, [sp, #140]	@ 0x8c
+  1000169c:	a952      	add	r1, sp, #328	@ 0x148
+> 100016a6:	f7ff fb29 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100016aa:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  100016ac:	9a07      	ldr	r2, [sp, #28]
+> 100016b6:	f7ff fb21 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100016ba:	9b00      	ldr	r3, [sp, #0]
+  100016bc:	9a02      	ldr	r2, [sp, #8]
+> 100016c2:	f7ff fb1b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100016c6:	9b28      	ldr	r3, [sp, #160]	@ 0xa0
+  100016c8:	a953      	add	r1, sp, #332	@ 0x14c
+> 100016d2:	f7ff fb13 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100016d6:	002a      	movs	r2, r5
+  100016d8:	9b04      	ldr	r3, [sp, #16]
+> 100016de:	f7ff fb0d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100016e2:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  100016e4:	9a10      	ldr	r2, [sp, #64]	@ 0x40
+> 100016ea:	f7ff fb07 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100016ee:	002b      	movs	r3, r5
+  100016f0:	9a07      	ldr	r2, [sp, #28]
+> 100016fa:	f7ff faff 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100016fe:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  10001700:	9a02      	ldr	r2, [sp, #8]
+> 10001706:	f7ff faf9 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000170a:	9b00      	ldr	r3, [sp, #0]
+  1000170c:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 10001712:	f7ff faf3 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001716:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  10001718:	9a08      	ldr	r2, [sp, #32]
+> 1000171e:	f7ff faed 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001722:	9b2d      	ldr	r3, [sp, #180]	@ 0xb4
+  10001724:	a954      	add	r1, sp, #336	@ 0x150
+> 1000172e:	f7ff fae5 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001732:	9b24      	ldr	r3, [sp, #144]	@ 0x90
+  10001734:	a954      	add	r1, sp, #336	@ 0x150
+> 1000173e:	f7ff fadd 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001742:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  10001744:	9a07      	ldr	r2, [sp, #28]
+> 1000174e:	f7ff fad5 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001752:	002b      	movs	r3, r5
+  10001754:	9a02      	ldr	r2, [sp, #8]
+> 1000175a:	f7ff facf 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000175e:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  10001760:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 10001766:	f7ff fac9 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000176a:	9b00      	ldr	r3, [sp, #0]
+  1000176c:	9a08      	ldr	r2, [sp, #32]
+> 10001772:	f7ff fac3 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001776:	9b04      	ldr	r3, [sp, #16]
+  10001778:	9a0b      	ldr	r2, [sp, #44]	@ 0x2c
+> 1000177e:	f7ff fabd 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001782:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  10001784:	9a07      	ldr	r2, [sp, #28]
+> 1000178e:	f7ff fab5 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001792:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+  10001794:	9a02      	ldr	r2, [sp, #8]
+> 1000179a:	f7ff faaf 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  1000179e:	002b      	movs	r3, r5
+  100017a0:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 100017a6:	f7ff faa9 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100017aa:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+  100017ac:	9a08      	ldr	r2, [sp, #32]
+> 100017b2:	f7ff faa3 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100017b6:	9b00      	ldr	r3, [sp, #0]
+  100017b8:	a956      	add	r1, sp, #344	@ 0x158
+> 100017be:	f7ff fa9d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100017c2:	9b25      	ldr	r3, [sp, #148]	@ 0x94
+  100017c4:	a956      	add	r1, sp, #344	@ 0x158
+> 100017ce:	f7ff fa95 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100017d2:	9b00      	ldr	r3, [sp, #0]
+  100017d4:	9a07      	ldr	r2, [sp, #28]
+> 100017de:	f7ff fa8d 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100017e2:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+  100017e4:	9a02      	ldr	r2, [sp, #8]
+> 100017ea:	f7ff fa87 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100017ee:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+  100017f0:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+> 100017f6:	f7ff fa81 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  100017fa:	002b      	movs	r3, r5
+  100017fc:	9a08      	ldr	r2, [sp, #32]
+> 10001802:	f7ff fa7b 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001806:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+  10001808:	9a2a      	ldr	r2, [sp, #168]	@ 0xa8
+> 1000180e:	f7ff fa75 	bl	10000cfc <_ZN10tinycryptoL9mul32_accERmS0_mm>
+  10001812:	9811      	ldr	r0, [sp, #68]	@ 0x44
+> 10001814:	f7ff faa5 	bl	10000d62 <_ZN10tinycrypto2FeC1Ev>
+  10001818:	ab58      	add	r3, sp, #352	@ 0x160
+  1000181a:	001a      	movs	r2, r3
+> 10001926:	f7ff fa0f 	bl	10000d48 <_ZN10tinycryptoL9umul32_64Emm.constprop.0>
+  1000192a:	9b04      	ldr	r3, [sp, #16]
+  1000192c:	ac58      	add	r4, sp, #352	@ 0x160
+> 10001a30 <_ZN10tinycrypto2Fe18conditionally_swapERS0_l>:
+  10001a30:	2300      	movs	r3, #0
+  10001a32:	b530      	push	{r4, r5, lr}
+> 10001a4c:	d1f3      	bne.n	10001a36 <_ZN10tinycrypto2Fe18conditionally_swapERS0_l+0x6>
+  10001a4e:	bd30      	pop	{r4, r5, pc}
+  
+> 10001a50 <_ZN10tinycrypto2Fe10from_bytesEPKh>:
+  10001a50:	b5f0      	push	{r4, r5, r6, r7, lr}
+  10001a52:	000e      	movs	r6, r1
+> 10001a58:	f7ff f983 	bl	10000d62 <_ZN10tinycrypto2FeC1Ev>
+  10001a5c:	002f      	movs	r7, r5
+  10001a5e:	0031      	movs	r1, r6
+> 10001a76:	d114      	bne.n	10001aa2 <_ZN10tinycrypto2Fe10from_bytesEPKh+0x52>
+  10001a78:	221a      	movs	r2, #26
+  10001a7a:	6823      	ldr	r3, [r4, #0]
+> 10001a9a:	d1ea      	bne.n	10001a72 <_ZN10tinycrypto2Fe10from_bytesEPKh+0x22>
+  10001a9c:	0028      	movs	r0, r5
+  10001a9e:	b011      	add	sp, #68	@ 0x44
+> 10001aac:	e7e9      	b.n	10001a82 <_ZN10tinycrypto2Fe10from_bytesEPKh+0x32>
+  	...
+  
+> 10002e2a:	f001 f90f 	bl	1000404c <__wrap___aeabi_lmul>
+  10002e2e:	f7ff ffe5 	bl	10002dfc <sleep_us>
+  10002e32:	bd10      	pop	{r4, pc}
+> 10003490 <__wrap___aeabi_ldivmod>:
+  10003490:	4694      	mov	ip, r2
+  10003492:	4a4a      	ldr	r2, [pc, #296]	@ (100035bc <udiv0+0x1a>)
+> 100034c0 <__wrap___aeabi_uldivmod>:
+  100034c0:	4694      	mov	ip, r2
+  100034c2:	4a3e      	ldr	r2, [pc, #248]	@ (100035bc <udiv0+0x1a>)
+> 1000404c <__wrap___aeabi_lmul>:
+  1000404c:	4351      	muls	r1, r2
+  1000404e:	4343      	muls	r3, r0
+> 10004386:	f7ff f89b 	bl	100034c0 <__wrap___aeabi_uldivmod>
+  1000438a:	9b0e      	ldr	r3, [sp, #56]	@ 0x38
+  1000438c:	b2d2      	uxtb	r2, r2
+> 200001a0:	f000 fca6 	bl	20000af0 <____wrap___aeabi_lmul_veneer>
+  200001a4:	0002      	movs	r2, r0
+  200001a6:	000b      	movs	r3, r1
+> 20000af0 <____wrap___aeabi_lmul_veneer>:
+  20000af0:	b401      	push	{r0}
+> 20000af2:	4802      	ldr	r0, [pc, #8]	@ (20000afc <____wrap___aeabi_lmul_veneer+0xc>)
+  20000af4:	4684      	mov	ip, r0
+  20000af6:	bc01      	pop	{r0}
+
+

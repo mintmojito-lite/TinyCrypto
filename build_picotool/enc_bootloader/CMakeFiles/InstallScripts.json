@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Tinycrypto/build_picotool/enc_bootloader/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
