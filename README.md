@@ -1,6 +1,20 @@
-Launch the local benchmark dashboard with: python dashboard.py
+# TinyCrypto Benchmarks & Verification
 
-Performance Measurements
+This repository contains two independent dashboards to compare traditional and TinyCrypto performance side-by-side on separate screens:
+
+### 1. Traditional Method Dashboard
+Runs a live benchmark of standard algorithms using Python's `cryptography` library (OpenSSL under the hood) on the laptop CPU.
+```bash
+python dashboard_traditional.py
+```
+
+### 2. TinyCrypto Method Dashboard
+Displays real captured hardware measurements from a bare-metal Raspberry Pi Pico (RP2040) deployment.
+```bash
+python dashboard_tinycrypto.py
+```
+
+## Performance Measurements
 Standard limits executed independently on logical limits (~2.6 GHz process architecture) scale gracefully across operations processing parallel buffers mathematically safely.
 
 | Algorithm            | Throughput     | vs Reference      |
